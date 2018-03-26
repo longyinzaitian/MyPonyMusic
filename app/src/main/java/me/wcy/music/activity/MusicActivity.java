@@ -8,8 +8,11 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
@@ -33,6 +36,7 @@ import me.wcy.music.executor.WeatherExecutor;
 import me.wcy.music.fragment.LocalMusicFragment;
 import me.wcy.music.fragment.PlayFragment;
 import me.wcy.music.fragment.SheetListFragment;
+import me.wcy.music.model.Music;
 import me.wcy.music.service.AudioPlayer;
 import me.wcy.music.service.QuitTimer;
 import me.wcy.music.storage.preference.Preferences;
@@ -114,6 +118,14 @@ public class MusicActivity extends BaseActivity implements View.OnClickListener,
                             isShaking = true;
                             if (Preferences.getShakeMusicEnable()) {
                                 AudioPlayer.get().next();
+                                Vibrator vibrator = (Vibrator) MusicActivity.this.getSystemService(Context.VIBRATOR_SERVICE);
+                                if (vibrator != null) {
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                        vibrator.vibrate(VibrationEffect.createOneShot(300, VibrationEffect.DEFAULT_AMPLITUDE));
+                                    } else {
+                                        vibrator.vibrate(300);
+                                    }
+                                }
                             }
                             // 延迟200毫秒 防止抖动
                             new Handler().postDelayed(new Runnable() {
