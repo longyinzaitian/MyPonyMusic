@@ -22,6 +22,8 @@
 
     <style name="AppTheme.Search" parent="AppBaseTheme">
         <item name="colorAccent">@color/white</item>
+        <!--自定义AlertDialog-->
+        <item name="alertDialogTheme">@style/Theme.AppCompat.Light.Dialog.Alert.Self</item>
     </style>
 
     <style name="AppThemeDark.Search" parent="AppBaseThemeDark">
@@ -29,4 +31,10 @@
     </style>
 
     <style name="AppTheme.Text" parent="TextAppearance.AppCompat" />
+
+    <style name="Theme.AppCompat.Light.Dialog.Alert.Self"
+           parent="@style/Theme.AppCompat.Light.Dialog.Alert">
+        <!--修改AlertDialog按钮的颜色-->
+        <item name="colorAccent">@color/red</item>
+    </style>
 </resources>
