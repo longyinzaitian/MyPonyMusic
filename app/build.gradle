@@ -3,23 +3,22 @@ apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "me.wcy.music"
+        applicationId "com.music.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
-
-        manifestPlaceholders = [AMAP_KEY: getLocalValue("AMAP_KEY")]
     }
 
     signingConfigs {
         release {
-            storeFile file("wangchenyan.keystore")
-            storePassword getLocalValue("STORE_PASSWORD")
-            keyAlias getLocalValue("KEY_ALIAS")
-            keyPassword getLocalValue("KEY_PASSWORD")
+            storeFile file("release.keystore")
+            storePassword "music@168"
+            keyAlias "music"
+            keyPassword "music@168"
         }
         debug {
             storeFile file("debug.keystore")
@@ -37,26 +36,10 @@ android {
             signingConfig signingConfigs.debug
         }
     }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    buildToolsVersion '27.0.3'
-}
-
-def getLocalValue(String key) {
-    return getLocalValue(key, false)
-}
-
-def getLocalValue(String key, boolean quot) {
-    Properties properties = new Properties()
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
-    def value = properties.containsKey(key) ? properties.get(key) : ""
-    if (quot) {
-        value = "\"" + value + "\""
-    }
-    return value
 }
 
 greendao {
@@ -69,11 +52,11 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportVersion}"
     implementation "com.android.support:design:${rootProject.ext.supportVersion}"
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation 'com.zhy:okhttputils:2.6.2'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.github.bumptech.glide:glide:3.8.0'
     implementation 'me.wcy:lrcview:2.0.1'
-    implementation 'com.hwangjr.rxbus:rxbus:2.0.0'
+    implementation 'com.tencent.bugly:crashreport_upgrade:1.2.5'
     implementation 'org.greenrobot:greendao:3.2.2'
 }

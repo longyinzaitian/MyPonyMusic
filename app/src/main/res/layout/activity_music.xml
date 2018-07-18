@@ -4,6 +4,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
     <include layout="@layout/activity_music_include" />
@@ -13,6 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:itemIconTint="?attr/colorPrimary"
-        app:menu="@menu/navigation_menu" />
+        app:itemIconTint="@color/color_blue"
+        app:menu="@menu/navigation_menu"
+        android:visibility="gone"
+        />
 </android.support.v4.widget.DrawerLayout>

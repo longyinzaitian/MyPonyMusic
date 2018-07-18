@@ -10,7 +10,7 @@
         android:layout_width="3dp"
         android:layout_height="50dp"
         android:layout_marginRight="3dp"
-        android:background="@color/red"
+        android:background="@color/color_blue"
         android:contentDescription="@null"
         android:visibility="invisible" />
 
@@ -57,7 +57,7 @@
                     android:ellipsize="end"
                     android:singleLine="true"
                     android:text="歌手 - 专辑"
-                    android:textColor="@color/grey"
+                    android:textColor="@color/grey_900"
                     android:textSize="12sp" />
             </LinearLayout>
 

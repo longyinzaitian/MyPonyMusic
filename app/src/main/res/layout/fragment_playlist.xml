@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <include
+            layout="@layout/include_layout_top_title"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_blue"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            >
+            <RelativeLayout
+                android:id="@+id/search_rv"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical|center_horizontal"
+                android:background="@drawable/shape_search_bg"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                >
+                <ImageView
+                    android:id="@+id/search_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_menu_search"
+                    android:contentDescription="@null"
+                    android:layout_centerVertical="true"
+                    android:tint="@color/color_blue"
+                    android:tintMode="src_in"
+                    android:paddingRight="10dp"
+                    />
+                <TextView
+                    android:id="@+id/search_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="搜索歌曲"
+                    android:textColorHint="@color/grey"
+                    android:layout_toRightOf="@+id/search_icon"
+                    android:layout_centerVertical="true"
+                    />
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/lv_playlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:divider="@null"
+            android:paddingBottom="@dimen/play_bar_height" />
+
+        <include
+            android:id="@+id/ll_loading"
+            layout="@layout/include_loading"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/ll_load_fail"
+            layout="@layout/include_load_fail"
+            android:visibility="gone" />
+    </FrameLayout>
+</LinearLayout>

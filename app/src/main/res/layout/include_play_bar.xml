@@ -51,6 +51,15 @@
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/iv_play_bar_pre"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_play_bar_btn_pre"
+            android:layout_marginRight="9dp"
+            />
+
+        <ImageView
             android:id="@+id/iv_play_bar_play"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,10 +68,12 @@
 
         <ImageView
             android:id="@+id/iv_play_bar_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:contentDescription="@null"
-            android:src="@drawable/ic_play_bar_btn_next" />
+            android:src="@drawable/ic_play_bar_btn_next"
+            android:layout_marginStart="9dp"
+            />
 
         <ImageView
             android:id="@+id/v_play_bar_playlist"

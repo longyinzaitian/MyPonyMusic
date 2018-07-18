@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,7 +9,9 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:visibility="gone"
+        >
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -22,19 +24,117 @@
         <include layout="@layout/include_music_tab_bar" />
     </android.support.design.widget.AppBarLayout>
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/music_bottom_menu"
+        >
 
         <android.support.v4.view.ViewPager
-            android:id="@+id/viewpager"
+            android:id="@+id/music_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"/>
 
         <include
             layout="@layout/include_play_bar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/play_bar_height"
-            android:layout_gravity="bottom" />
-    </FrameLayout>
-</LinearLayout>
+            android:layout_gravity="bottom"
+            android:layout_alignParentBottom="true"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/music_bottom_menu"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:background="@color/black_transparent"
+        >
+        <LinearLayout
+            android:id="@+id/ll_local"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            >
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/icon_local_page_im_view"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/icon_local_page"
+                android:tintMode="src_in"
+                android:tint="@color/color_blue"
+                android:layout_gravity="center_horizontal"
+                />
+            <TextView
+                android:id="@+id/music_local"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="本地"
+                android:gravity="center_vertical|center_horizontal"
+                android:textColor="@color/color_blue"
+                android:background="?attr/selectableItemBackground"
+                android:layout_marginTop="3dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_network"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            >
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/icon_network_page_im_view"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/icon_network_page"
+                android:tintMode="src_in"
+                android:tint="@color/grey"
+                android:layout_gravity="center_horizontal"
+                />
+            <TextView
+                android:id="@+id/music_network"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="网络"
+                android:gravity="center_vertical|center_horizontal"
+                android:background="?attr/selectableItemBackground"
+                android:layout_marginTop="3dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_setting"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            >
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/icon_setting_page_im_view"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/icon_setting_page"
+                android:tintMode="src_in"
+                android:tint="@color/grey"
+                android:layout_gravity="center_horizontal"
+                />
+            <TextView
+                android:id="@+id/music_setting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="设置"
+                android:gravity="center_vertical|center_horizontal"
+                android:background="?attr/selectableItemBackground"
+                android:layout_marginTop="3dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
