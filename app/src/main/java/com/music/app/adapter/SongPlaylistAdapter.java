@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.music.app.R;
 import com.music.app.activity.OnlineMusicActivity;
+import com.music.app.activity.SingerListActivity;
 import com.music.app.application.AppCache;
 import com.music.app.constants.Extras;
 import com.music.app.http.HttpCallback;
@@ -99,18 +100,30 @@ public class SongPlaylistAdapter extends RecyclerView.Adapter {
                     startActivity(1);
                 }
             });
+
+            viewHolderFirst.mSinger.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(2);
+                }
+            });
         }
     }
 
-    List<SongListInfo> mSongLists;
+    private List<SongListInfo> mSongLists;
+
     private void startActivity(int index) {
         if (mSongLists == null || mSongLists.isEmpty()) {
             return;
         }
-        Intent intent = new Intent(mContext, OnlineMusicActivity.class);
-        SongListInfo songListInfo = mSongLists.get(index);
-        intent.putExtra(Extras.MUSIC_LIST_TYPE, songListInfo);
-        mContext.startActivity(intent);
+        if (index == 2) {
+            mContext.startActivity(new Intent(mContext, SingerListActivity.class));
+        } else {
+            Intent intent = new Intent(mContext, OnlineMusicActivity.class);
+            SongListInfo songListInfo = mSongLists.get(index);
+            intent.putExtra(Extras.MUSIC_LIST_TYPE, songListInfo);
+            mContext.startActivity(intent);
+        }
     }
 
     private void initSongInfo() {
@@ -269,6 +282,8 @@ public class SongPlaylistAdapter extends RecyclerView.Adapter {
         private ImageView mReGeBang;
         @Bind(R.id.music_xin_ge_bang)
         private ImageView mXinGeBang;
+        @Bind(R.id.music_singer)
+        private  ImageView mSinger;
         public ViewHolderFirst(View itemView) {
             super(itemView);
             ViewBinder.bind(this, itemView);

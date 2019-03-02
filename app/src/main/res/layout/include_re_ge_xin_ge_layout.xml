@@ -27,7 +27,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="热歌"
+                android:text="热歌榜"
                 android:textColor="@color/color_blue"
                 android:textSize="16sp"
                 android:gravity="center_horizontal"
@@ -55,7 +55,36 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="新歌"
+                android:text="新歌榜"
+                android:textColor="@color/color_blue"
+                android:textSize="16sp"
+                android:gravity="center_horizontal"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:background="@color/white_50p"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            >
+            <ImageView
+                android:id="@+id/music_singer"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:contentDescription="@null"
+                android:src="@drawable/singer"
+                android:scaleType="centerInside"
+                android:tint="@color/color_blue"
+                android:tintMode="src_in"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="歌手列表"
                 android:textColor="@color/color_blue"
                 android:textSize="16sp"
                 android:gravity="center_horizontal"
