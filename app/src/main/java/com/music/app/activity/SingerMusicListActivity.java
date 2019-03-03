@@ -11,11 +11,9 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -38,12 +36,12 @@ import com.music.app.utils.ViewUtils;
 import com.music.app.utils.binding.Bind;
 
 import java.io.File;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchMusicActivity extends BaseActivity implements SearchView.OnQueryTextListener
-        , AdapterView.OnItemClickListener, OnMoreClickListener {
+public class SingerMusicListActivity extends BaseActivity  implements
+        AdapterView.OnItemClickListener, OnMoreClickListener {
+
     @Bind(R.id.lv_search_music_list)
     private ListView lvSearchMusic;
     @Bind(R.id.ll_loading)
@@ -58,7 +56,7 @@ public class SearchMusicActivity extends BaseActivity implements SearchView.OnQu
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_music);
+        setContentView(R.layout.activity_singer_music_list);
 
         if (!checkServiceAlive()) {
             return;
@@ -71,10 +69,16 @@ public class SearchMusicActivity extends BaseActivity implements SearchView.OnQu
 
         registerReceiver();
         setBackGround();
+
+        String searchText = getIntent() != null ? getIntent().getStringExtra(Actions.ACTION_SEARCH_TEXT): "";
+        if (!("").equals(searchText)) {
+            onQueryTextSubmit(searchText);
+            setTitle(searchText);
+        }
     }
 
     private void setBackGround() {
-        Bitmap bitmap = FileUtils.getBackGroundBitmap(SearchMusicActivity.this);
+        Bitmap bitmap = FileUtils.getBackGroundBitmap(SingerMusicListActivity.this);
         if (bitmap != null) {
             lvSearchMusic.setBackgroundDrawable(new BitmapDrawable(bitmap));
         } else {
@@ -83,7 +87,7 @@ public class SearchMusicActivity extends BaseActivity implements SearchView.OnQu
     }
 
     private void registerReceiver() {
-        manager = LocalBroadcastManager.getInstance(SearchMusicActivity.this);
+        manager = LocalBroadcastManager.getInstance(SingerMusicListActivity.this);
         IntentFilter intentFilter = new IntentFilter(Actions.ACTION_CHANGE_BACK_GROUND);
         manager.registerReceiver(receiver, intentFilter);
     }
@@ -122,33 +126,27 @@ public class SearchMusicActivity extends BaseActivity implements SearchView.OnQu
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_search_music, menu);
-        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-        searchView.setMaxWidth(Integer.MAX_VALUE);
-        searchView.onActionViewExpanded();
-        searchView.setQueryHint(getString(R.string.search_tips));
-        searchView.setOnQueryTextListener(this);
-        searchView.setSubmitButtonEnabled(true);
-        try {
-            Field field = searchView.getClass().getDeclaredField("mGoButton");
-            field.setAccessible(true);
-            ImageView mGoButton = (ImageView) field.get(searchView);
-            mGoButton.setImageResource(R.drawable.ic_menu_search);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        getMenuInflater().inflate(R.menu.menu_search_music, menu);
+//        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+//        searchView.setMaxWidth(Integer.MAX_VALUE);
+//        searchView.onActionViewExpanded();
+//        searchView.setQueryHint(getString(R.string.search_tips));
+//        searchView.setOnQueryTextListener(this);
+//        searchView.setSubmitButtonEnabled(true);
+//        try {
+//            Field field = searchView.getClass().getDeclaredField("mGoButton");
+//            field.setAccessible(true);
+//            ImageView mGoButton = (ImageView) field.get(searchView);
+//            mGoButton.setImageResource(R.drawable.ic_menu_search);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
     public boolean onQueryTextSubmit(String query) {
         ViewUtils.changeViewState(lvSearchMusic, llLoading, llLoadFail, LoadStateEnum.LOADING);
         searchMusic(query);
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String newText) {
         return false;
     }
 
