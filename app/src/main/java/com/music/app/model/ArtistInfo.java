@@ -11,10 +11,10 @@ public class ArtistInfo {
     private String constellation;
     // 体重
     @SerializedName("weight")
-    private float weight;
+    private String weight;
     // 身高
     @SerializedName("stature")
-    private float stature;
+    private String stature;
     // 国籍
     @SerializedName("country")
     private String country;
@@ -42,19 +42,19 @@ public class ArtistInfo {
         this.constellation = constellation;
     }
 
-    public float getWeight() {
+    public String getWeight() {
         return weight;
     }
 
-    public void setWeight(float weight) {
+    public void setWeight(String weight) {
         this.weight = weight;
     }
 
-    public float getStature() {
+    public String getStature() {
         return stature;
     }
 
-    public void setStature(float stature) {
+    public void setStature(String stature) {
         this.stature = stature;
     }
 

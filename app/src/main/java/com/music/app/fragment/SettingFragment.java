@@ -27,6 +27,8 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
     private LinearLayout mActionExit;
     @Bind(R.id.title)
     private TextView mTitle;
+    @Bind(R.id.action_collect)
+    private LinearLayout mActionCollect;
 
     @Nullable
     @Override
@@ -48,6 +50,7 @@ public class SettingFragment extends BaseFragment implements View.OnClickListene
         mActionNight.setOnClickListener(this);
         mActionTimer.setOnClickListener(this);
         mActionExit.setOnClickListener(this);
+        mActionCollect.setOnClickListener(this);
     }
 
     @Override

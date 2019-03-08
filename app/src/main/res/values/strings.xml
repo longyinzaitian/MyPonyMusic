@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">音乐跳动</string>
+    <string name="app_name">音乐</string>
     <string name="sure">确定</string>
     <string name="cancel">取消</string>
     <string name="share">分享</string>
@@ -43,7 +43,7 @@
     <string name="menu_setting">功能设置</string>
     <string name="menu_background">背景切换</string>
     <string name="menu_share">推荐给朋友</string>
-    <string name="menu_about">关于波尼音乐</string>
+    <string name="menu_about">关于音乐</string>
     <string name="menu_night">夜间模式</string>
     <string name="menu_timer">定时停止播放</string>
     <string name="menu_exit">退出应用</string>
@@ -62,12 +62,12 @@
     <string name="weather_wind">%1$s风%2$s级&#160;&#160;湿度%3$s%%</string>
     <string name="timer_set">设置成功，将于%s分钟后关闭</string>
     <string name="timer_cancel">定时停止播放已取消</string>
-    <string name="share_app">青春，狂热，放纵，自由，当我们带上耳机以后做回自己，这是音乐的魅力。%s：http://fir.im/ponymusic</string>
+    <string name="share_app">青春，狂热，放纵，自由，当我们带上耳机以后做回自己，这是音乐的魅力.</string>
     <string name="copyright">Copyright © 2015&#045;%d</string>
-    <string name="about_project_url">https://github.com/wangchenyan/PonyMusic</string>
-    <string name="about_weibo">http://weibo.com/wangchenyan1993</string>
-    <string name="about_jianshu">http://www.jianshu.com/users/3231579893ac</string>
-    <string name="about_github">https://github.com/wangchenyan</string>
+    <string name="about_project_url">https://github.com</string>
+    <string name="about_weibo">http://weibo.com</string>
+    <string name="about_jianshu">http://www.jianshu.com</string>
+    <string name="about_github">https://github.com</string>
     <string name="music_info">歌曲信息</string>
     <string name="change_back_ground">更換背景</string>
     <string name="no_permission_location">没有位置信息权限，无法更新天气！</string>

@@ -19,7 +19,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.music.app.R;
-
 import com.music.app.constants.Extras;
 import com.music.app.enums.LoadStateEnum;
 import com.music.app.http.HttpCallback;
@@ -87,8 +86,8 @@ public class ArtistInfoActivity extends BaseActivity {
         String avatarUri = artistInfo.getAvatar_s1000();
         String country = artistInfo.getCountry();
         String constellation = artistInfo.getConstellation();
-        float stature = artistInfo.getStature();
-        float weight = artistInfo.getWeight();
+        String stature = artistInfo.getStature();
+        String weight = artistInfo.getWeight();
         String birth = artistInfo.getBirth();
         String intro = artistInfo.getIntro();
         String url = artistInfo.getUrl();
@@ -118,12 +117,12 @@ public class ArtistInfoActivity extends BaseActivity {
             tvConstellation.setText(getString(R.string.artist_info_constellation, constellation));
             llArtistInfoContainer.addView(tvConstellation);
         }
-        if (stature != 0f) {
+        if (stature != "") {
             TextView tvStature = (TextView) LayoutInflater.from(this).inflate(R.layout.item_artist_info, llArtistInfoContainer, false);
             tvStature.setText(getString(R.string.artist_info_stature, String.valueOf(stature)));
             llArtistInfoContainer.addView(tvStature);
         }
-        if (weight != 0f) {
+        if (weight != "") {
             TextView tvWeight = (TextView) LayoutInflater.from(this).inflate(R.layout.item_artist_info, llArtistInfoContainer, false);
             tvWeight.setText(getString(R.string.artist_info_weight, String.valueOf(weight)));
             llArtistInfoContainer.addView(tvWeight);

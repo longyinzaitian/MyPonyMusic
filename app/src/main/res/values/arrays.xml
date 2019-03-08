@@ -10,6 +10,7 @@
     <string-array name="online_music_dialog">
         <item>分享</item>
         <item>查看歌手信息</item>
+        <item>收藏</item>
         <item>下载</item>
     </string-array>
 

@@ -41,6 +41,7 @@ import com.music.app.http.HttpClient;
 import com.music.app.model.Music;
 import com.music.app.model.OnlineMusic;
 import com.music.app.model.SongListInfo;
+import com.music.app.storage.DBManager;
 import com.music.app.utils.FileUtils;
 import com.music.app.utils.ImageUtils;
 import com.music.app.utils.ScreenUtils;
@@ -211,7 +212,10 @@ public class OnlineMusicActivity extends BaseActivity implements OnItemClickList
                     case 1:// 查看歌手信息
                         artistInfo(onlineMusic);
                         break;
-                    case 2:// 下载
+                    case 2:// 收藏
+                        collect(onlineMusic);
+                        break;
+                    case 3:// 下载
                         download(onlineMusic);
                         break;
                     default:
@@ -288,6 +292,11 @@ public class OnlineMusicActivity extends BaseActivity implements OnItemClickList
                 mProgressDialog.cancel();
             }
         }.execute();
+    }
+
+    private void collect(final OnlineMusic onlineMusic) {
+        DBManager.get().getOnlineMusicDao().insertOrReplace(onlineMusic);
+        ToastUtils.show("收藏成功");
     }
 
     private void artistInfo(OnlineMusic onlineMusic) {

@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.music.app.R;
 import com.music.app.activity.ChangeBackgroundActivity;
+import com.music.app.activity.CollectionActivity;
 import com.music.app.activity.SettingActivity;
 import com.music.app.application.AppCache;
 import com.music.app.service.PlayService;
@@ -37,6 +38,9 @@ public class NaviMenuExecutor {
                 break;
             case R.id.action_background:
                 startActivity(activity, ChangeBackgroundActivity.class);
+                break;
+            case R.id.action_collect:
+                startActivity(activity, CollectionActivity.class);
                 break;
             default:
                 break;

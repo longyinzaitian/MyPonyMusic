@@ -2,10 +2,18 @@ package com.music.app.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Generated;
+
 /**
  * JavaBean
  */
+@Entity
 public class OnlineMusic {
+    @Id(autoincrement = true)
+    private Long id;
+
     @SerializedName("pic_big")
     private String pic_big;
     @SerializedName("pic_small")
@@ -22,6 +30,25 @@ public class OnlineMusic {
     private String album_title;
     @SerializedName("artist_name")
     private String artist_name;
+
+    @Generated(hash = 1183955380)
+    public OnlineMusic(Long id, String pic_big, String pic_small, String lrclink,
+            String song_id, String title, String ting_uid, String album_title,
+            String artist_name) {
+        this.id = id;
+        this.pic_big = pic_big;
+        this.pic_small = pic_small;
+        this.lrclink = lrclink;
+        this.song_id = song_id;
+        this.title = title;
+        this.ting_uid = ting_uid;
+        this.album_title = album_title;
+        this.artist_name = artist_name;
+    }
+
+    @Generated(hash = 1003164782)
+    public OnlineMusic() {
+    }
 
     public String getPic_big() {
         return pic_big;
@@ -85,5 +112,13 @@ public class OnlineMusic {
 
     public void setArtist_name(String artist_name) {
         this.artist_name = artist_name;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
