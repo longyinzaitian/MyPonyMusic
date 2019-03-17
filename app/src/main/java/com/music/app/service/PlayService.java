@@ -6,26 +6,28 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.os.AsyncTask;
 import android.os.Binder;
 import android.os.Handler;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Random;
-
 import com.music.app.application.AppCache;
-import com.music.app.constants.Actions;
-import com.music.app.storage.DBManager;
-import com.music.app.utils.Preferences;
 import com.music.app.application.Notifier;
+import com.music.app.constants.Actions;
 import com.music.app.enums.PlayModeEnum;
 import com.music.app.model.Music;
 import com.music.app.receiver.NoisyAudioStreamReceiver;
+import com.music.app.storage.DBManager;
 import com.music.app.utils.MusicUtils;
+import com.music.app.utils.Preferences;
+import com.music.app.utils.ThreadCenter;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
 
 /**
  * 音乐播放后台服务
@@ -106,31 +108,33 @@ public class PlayService extends Service implements MediaPlayer.OnCompletionList
      * 扫描音乐
      */
     public void updateMusicList(final EventCallback<Void> callback) {
-        new AsyncTask<Void, Void, List<Music>>() {
+        Future<List<Music>> future = ThreadCenter.getInstance().executeTask(new Callable<List<Music>>() {
             @Override
-            protected List<Music> doInBackground(Void... params) {
+            public List<Music> call() throws Exception {
                 return MusicUtils.scanMusic(PlayService.this);
             }
+        });
 
-            @Override
-            protected void onPostExecute(List<Music> musicList) {
-                AppCache.get().getMusicList().clear();
-                AppCache.get().getMusicList().addAll(musicList);
+        try {
+            List<Music> musicList = future.get();
+            AppCache.get().getMusicList().clear();
+            AppCache.get().getMusicList().addAll(musicList);
 
-                if (!AppCache.get().getMusicList().isEmpty()) {
-                    updatePlayingPosition();
-                    mPlayingMusic = AppCache.get().getMusicList().get(mPlayingPosition);
-                }
-
-                if (mListener != null) {
-                    mListener.onMusicListUpdate();
-                }
-
-                if (callback != null) {
-                    callback.onEvent(null);
-                }
+            if (!AppCache.get().getMusicList().isEmpty()) {
+                updatePlayingPosition();
+                mPlayingMusic = AppCache.get().getMusicList().get(mPlayingPosition);
             }
-        }.execute();
+
+            if (mListener != null) {
+                mListener.onMusicListUpdate();
+            }
+
+            if (callback != null) {
+                callback.onEvent(null);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
