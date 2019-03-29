@@ -31,9 +31,11 @@ import java.util.List;
 
 /**
  * 歌单列表适配器
+ *
+ * @author .
  */
 public class SongPlaylistAdapter extends RecyclerView.Adapter {
-    private static final String TAG = "SongPlaylistAdapter";
+
     private static final int TYPE_PROFILE = 0;
     private static final int TYPE_MUSIC_LIST = 1;
     private static final int TYPE_FIRST = 2;
@@ -87,25 +89,16 @@ public class SongPlaylistAdapter extends RecyclerView.Adapter {
             holderMusicList.vDivider.setVisibility(isShowDivider(position) ? View.VISIBLE : View.GONE);
         } else if (holder instanceof ViewHolderFirst) {
             ViewHolderFirst viewHolderFirst = (ViewHolderFirst) holder;
-            viewHolderFirst.mReGeBang.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(0);
-                }
-            });
+            viewHolderFirst.mReGeBang.setOnClickListener((View v) ->
+                startActivity(0)
+            );
 
-            viewHolderFirst.mXinGeBang.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(1);
-                }
-            });
+            viewHolderFirst.mXinGeBang.setOnClickListener((View v) ->
+                startActivity(1)
+            );
 
-            viewHolderFirst.mSinger.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(2);
-                }
+            viewHolderFirst.mSinger.setOnClickListener((View v) -> {
+                startActivity(2);
             });
         }
     }

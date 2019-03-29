@@ -16,6 +16,8 @@ import com.music.app.utils.FileUtils;
 
 /**
  * 异常捕获
+ *
+ * @author .
  */
 public class CrashHandler implements Thread.UncaughtExceptionHandler {
     private static SimpleDateFormat TIME_FORMAT = new SimpleDateFormat("MM-dd HH:mm:ss.SSS", Locale.getDefault());

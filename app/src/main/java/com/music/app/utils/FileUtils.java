@@ -24,6 +24,8 @@ import com.music.app.model.Music;
 
 /**
  * 文件工具类
+ *
+ * @author .
  */
 public class FileUtils {
     private static final String MP3 = ".mp3";

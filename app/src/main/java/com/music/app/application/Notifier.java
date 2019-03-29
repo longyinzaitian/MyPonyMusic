@@ -92,13 +92,13 @@ public class Notifier {
         Intent nextIntent = new Intent(StatusBarReceiver.ACTION_STATUS_BAR);
         nextIntent.putExtra(StatusBarReceiver.EXTRA, StatusBarReceiver.EXTRA_NEXT);
         PendingIntent nextPendingIntent = PendingIntent.getBroadcast(context, 1, nextIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-//        remoteViews.setImageViewResource(R.id.iv_next, getNextIconRes(isLightNotificationTheme));
+        //        remoteViews.setImageViewResource(R.id.iv_next, getNextIconRes(isLightNotificationTheme));
         remoteViews.setOnClickPendingIntent(R.id.iv_next, nextPendingIntent);
 
         Intent preIntent = new Intent(StatusBarReceiver.ACTION_STATUS_BAR);
         preIntent.putExtra(StatusBarReceiver.EXTRA, StatusBarReceiver.EXTRA_PRE);
         PendingIntent prePendingIntent = PendingIntent.getBroadcast(context, 2, nextIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-//        remoteViews.setImageViewResource(R.id.iv_prev, getNextIconRes(isLightNotificationTheme));
+        //        remoteViews.setImageViewResource(R.id.iv_prev, getNextIconRes(isLightNotificationTheme));
         remoteViews.setOnClickPendingIntent(R.id.iv_prev, prePendingIntent);
 
         return remoteViews;
@@ -136,7 +136,7 @@ public class Notifier {
         }
         int layoutId = remoteViews.getLayoutId();
         ViewGroup notificationLayout = (ViewGroup) LayoutInflater.from(context).inflate(layoutId, null);
-        TextView title = (TextView) notificationLayout.findViewById(android.R.id.title);
+        TextView title = notificationLayout.findViewById(android.R.id.title);
         if (title != null) {
             return title.getCurrentTextColor();
         } else {

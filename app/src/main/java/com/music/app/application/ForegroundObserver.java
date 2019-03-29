@@ -5,15 +5,16 @@ import android.app.Application;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
+/**
+ * @author .
+ */
 public class ForegroundObserver implements Application.ActivityLifecycleCallbacks {
-    private static final String TAG = "ForegroundObserver";
+
     private static final long CHECK_TASK_DELAY = 500;
 
     private List<Observer> observerList;
@@ -50,7 +51,7 @@ public class ForegroundObserver implements Application.ActivityLifecycleCallback
     }
 
     private ForegroundObserver() {
-        observerList = Collections.synchronizedList(new ArrayList<Observer>());
+        observerList = Collections.synchronizedList(new ArrayList<>());
         handler = new Handler(Looper.getMainLooper());
     }
 
@@ -88,7 +89,6 @@ public class ForegroundObserver implements Application.ActivityLifecycleCallback
         if (!isForeground && resumeActivityCount > 0) {
             isForeground = true;
             // 从后台进入前台
-            Log.i(TAG, "app in foreground");
             notify(activity, true);
         }
     }
@@ -96,16 +96,12 @@ public class ForegroundObserver implements Application.ActivityLifecycleCallback
     @Override
     public void onActivityPaused(final Activity activity) {
         resumeActivityCount--;
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
+        handler.postDelayed(() -> {
                 if (isForeground && resumeActivityCount == 0) {
                     isForeground = false;
                     // 从前台进入后台
-                    Log.i(TAG, "app in background");
                     ForegroundObserver.this.notify(activity, false);
                 }
-            }
         }, CHECK_TASK_DELAY);
     }
 

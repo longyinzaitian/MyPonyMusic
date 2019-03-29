@@ -18,6 +18,7 @@ import com.music.app.model.Music;
 
 /**
  * 歌曲工具类
+ * @author .
  */
 public class MusicUtils {
     private static final String SELECTION = MediaStore.Audio.AudioColumns.SIZE + " >= ? AND " + MediaStore.Audio.AudioColumns.DURATION + " >= ?";

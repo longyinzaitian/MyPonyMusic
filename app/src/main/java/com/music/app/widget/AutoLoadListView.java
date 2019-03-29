@@ -13,6 +13,8 @@ import com.music.app.R;
 
 /**
  * 自动加载更多ListView
+ *
+ * @author .
  */
 public class AutoLoadListView extends ListView implements AbsListView.OnScrollListener {
     private static final String TAG = AutoLoadListView.class.getSimpleName();

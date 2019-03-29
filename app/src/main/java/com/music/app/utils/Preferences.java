@@ -9,6 +9,7 @@ import com.music.app.R;
 
 /**
  * SharedPreferences工具类
+ * @author .
  */
 public class Preferences {
     private static final String PLAY_POSITION = "play_position";

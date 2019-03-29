@@ -6,6 +6,8 @@ import com.music.app.enums.LoadStateEnum;
 
 /**
  * 视图工具类
+ *
+ * @author .
  */
 public class ViewUtils {
     public static void changeViewState(View loadSuccess, View loading, View loadFail, LoadStateEnum state) {
@@ -24,6 +26,8 @@ public class ViewUtils {
                 loadSuccess.setVisibility(View.GONE);
                 loading.setVisibility(View.GONE);
                 loadFail.setVisibility(View.VISIBLE);
+                break;
+            default:
                 break;
         }
     }

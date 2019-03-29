@@ -15,7 +15,7 @@ import com.music.app.utils.binding.Bind;
 import com.music.app.utils.binding.ViewBinder;
 
 /**
- * @author husy
+ * @author .
  * @date 2019/3/3
  */
 public class SingerListAdapter extends RecyclerView.Adapter<SingerListAdapter.Holder> {

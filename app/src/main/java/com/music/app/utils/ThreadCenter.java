@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author xx
+ * @author .
  * @date 2019/3/18
  */
 public class ThreadCenter {

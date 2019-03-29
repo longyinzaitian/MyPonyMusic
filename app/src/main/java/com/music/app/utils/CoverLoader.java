@@ -24,7 +24,9 @@ public class CoverLoader {
     public static final int THUMBNAIL_MAX_LENGTH = 500;
     private static final String KEY_NULL = "null";
 
-    // 封面缓存
+    /**
+     * 封面缓存
+     */
     private LruCache<String, Bitmap> mCoverCache;
     private Context mContext;
 

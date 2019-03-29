@@ -8,10 +8,6 @@ import android.support.v4.util.LongSparseArray;
 import android.util.Log;
 
 import com.amap.api.location.AMapLocalWeatherLive;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import com.music.app.executor.DownloadMusicInfo;
 import com.music.app.model.Music;
 import com.music.app.model.SongListInfo;
@@ -21,14 +17,23 @@ import com.music.app.utils.Preferences;
 import com.music.app.utils.ScreenUtils;
 import com.music.app.utils.ToastUtils;
 
+import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * @author .
+ */
 public class AppCache {
     private Context mContext;
     private PlayService mPlayService;
-    // 本地歌曲列表
+    /**
+     * 本地歌曲列表
+     */
     private final List<Music> mMusicList = new ArrayList<>();
-    // 歌单列表
-    private final List<SongListInfo> mSongListInfos = new ArrayList<>();
+    /**
+     *  歌单列表
+     */
+    private final List<SongListInfo> mSongListInfoArr = new ArrayList<>();
     private final List<Activity> mActivityStack = new ArrayList<>();
     private final LongSparseArray<DownloadMusicInfo> mDownloadList = new LongSparseArray<>();
     private AMapLocalWeatherLive mAMapLocalWeatherLive;
@@ -71,7 +76,7 @@ public class AppCache {
     }
 
     public List<SongListInfo> getSongListInfos() {
-        return mSongListInfos;
+        return mSongListInfoArr;
     }
 
     public void clearStack() {

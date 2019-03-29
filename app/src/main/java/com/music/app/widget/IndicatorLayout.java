@@ -13,6 +13,8 @@ import com.music.app.utils.ScreenUtils;
 
 /**
  * 播放页Indicator
+ *
+ * @author .
  */
 public class IndicatorLayout extends LinearLayout {
     public IndicatorLayout(Context context) {

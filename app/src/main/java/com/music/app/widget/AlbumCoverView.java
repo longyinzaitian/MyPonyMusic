@@ -21,6 +21,8 @@ import com.music.app.utils.CoverLoader;
 
 /**
  * 专辑封面
+ *
+ * @author .
  */
 public class AlbumCoverView extends View implements ValueAnimator.AnimatorUpdateListener {
     private static final long TIME_UPDATE = 50L;
@@ -44,11 +46,11 @@ public class AlbumCoverView extends View implements ValueAnimator.AnimatorUpdate
     private float mNeedleRotation = NEEDLE_ROTATION_PLAY;
     private boolean isPlaying = false;
 
-    // 图片起始坐标
+    //图片起始坐标
     private Point mDiscPoint = new Point();
     private Point mCoverPoint = new Point();
     private Point mNeedlePoint = new Point();
-    // 旋转中心坐标
+    //旋转中心坐标
     private Point mDiscCenterPoint = new Point();
     private Point mCoverCenterPoint = new Point();
     private Point mNeedleCenterPoint = new Point();
