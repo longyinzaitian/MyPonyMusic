@@ -9,7 +9,12 @@ import com.music.app.application.AppCache;
 import com.music.app.model.Music;
 import com.music.app.utils.CoverLoader;
 
-
+/**
+ *
+ *
+ * @author .
+ *
+ */
 public class MediaSessionManager {
     private static final String TAG = "MediaSessionManager";
     private static final long MEDIA_SESSION_ACTIONS = PlaybackStateCompat.ACTION_PLAY

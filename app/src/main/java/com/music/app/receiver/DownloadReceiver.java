@@ -22,6 +22,7 @@ import com.music.app.utils.id3.ID3Tags;
 
 /**
  * 下载完成广播接收器
+ * @author .
  */
 public class DownloadReceiver extends BroadcastReceiver {
     private Handler mHandler = new Handler(Looper.getMainLooper());

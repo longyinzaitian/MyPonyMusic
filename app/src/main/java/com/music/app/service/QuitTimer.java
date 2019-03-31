@@ -7,6 +7,9 @@ import android.text.format.DateUtils;
 import com.music.app.application.AppCache;
 
 
+/**
+ * @author .
+ */
 public class QuitTimer {
     private PlayService mPlayService;
     private EventCallback<Long> mTimerCallback;
@@ -17,6 +20,9 @@ public class QuitTimer {
         return SingletonHolder.sInstance;
     }
 
+    /**
+     * 静态内部类单例模式
+     */
     private static class SingletonHolder {
         private static final QuitTimer sInstance = new QuitTimer();
     }

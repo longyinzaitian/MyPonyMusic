@@ -5,7 +5,9 @@ import android.support.annotation.NonNull;
 
 import static android.content.Context.AUDIO_SERVICE;
 
-
+/**
+ * @author .
+ */
 public class AudioFocusManager implements AudioManager.OnAudioFocusChangeListener {
     private PlayService mPlayService;
     private AudioManager mAudioManager;
@@ -69,6 +71,9 @@ public class AudioFocusManager implements AudioManager.OnAudioFocusChangeListene
                     mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, mVolumeWhenFocusLossTransientCanDuck / 2,
                             AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
                 }
+                break;
+
+            default:
                 break;
         }
     }

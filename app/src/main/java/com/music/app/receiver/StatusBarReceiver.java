@@ -8,7 +8,9 @@ import android.text.TextUtils;
 import com.music.app.constants.Actions;
 import com.music.app.service.PlayService;
 
-
+/**
+ * @author .
+ */
 public class StatusBarReceiver extends BroadcastReceiver {
     public static final String ACTION_STATUS_BAR = "me.wcy.music.STATUS_BAR_ACTIONS";
     public static final String EXTRA = "extra";

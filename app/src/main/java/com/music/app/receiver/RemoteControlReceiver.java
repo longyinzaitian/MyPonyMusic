@@ -11,6 +11,7 @@ import com.music.app.service.PlayService;
 
 /**
  * 耳机线控，仅在5.0以下有效，5.0以上被{@link MediaSessionCompat}接管。
+ * @author .
  */
 public class RemoteControlReceiver extends BroadcastReceiver {
 
@@ -33,6 +34,8 @@ public class RemoteControlReceiver extends BroadcastReceiver {
                 break;
             case KeyEvent.KEYCODE_MEDIA_PREVIOUS:
                 PlayService.startCommand(context, Actions.ACTION_MEDIA_PREVIOUS);
+                break;
+            default:
                 break;
         }
     }

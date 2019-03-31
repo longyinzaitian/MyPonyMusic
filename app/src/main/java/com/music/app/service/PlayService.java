@@ -31,6 +31,8 @@ import java.util.concurrent.Future;
 
 /**
  * 音乐播放后台服务
+ *
+ * @author .
  */
 public class PlayService extends Service implements MediaPlayer.OnCompletionListener {
     private static final String TAG = "Service";
@@ -48,9 +50,15 @@ public class PlayService extends Service implements MediaPlayer.OnCompletionList
     private AudioFocusManager mAudioFocusManager;
     private MediaSessionManager mMediaSessionManager;
     private OnPlayerEventListener mListener;
-    // 正在播放的歌曲[本地|网络]
+    /**
+     * 正在播放的歌曲[本地|网络]
+     *
+     */
     private Music mPlayingMusic;
-    // 正在播放的本地歌曲的序号
+    /**
+     * 正在播放的本地歌曲的序号
+     *
+     */
     private int mPlayingPosition = -1;
     private int mPlayState = STATE_IDLE;
 
