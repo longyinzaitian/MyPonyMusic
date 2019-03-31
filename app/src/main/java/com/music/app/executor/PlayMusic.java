@@ -12,6 +12,9 @@ import com.music.app.utils.NetworkUtils;
 import com.music.app.utils.Preferences;
 
 
+/**
+ * @author .
+ */
 
 public abstract class PlayMusic implements IExecutor<Music> {
     private Activity mActivity;
@@ -56,6 +59,9 @@ public abstract class PlayMusic implements IExecutor<Music> {
         getPlayInfo();
     }
 
+    /**
+     * 获取播放信息
+     */
     protected abstract void getPlayInfo();
 
     protected void checkCounter() {

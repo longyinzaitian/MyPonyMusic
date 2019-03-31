@@ -14,8 +14,10 @@ import com.music.app.utils.FileUtils;
 
 /**
  * 下载搜索的音乐
+ *
+ * @author .
  */
-public abstract class DownloadSearchedMusic extends DownloadMusic {
+public abstract class DownloadSearchedMusic extends BaseDownloadMusic {
     private SearchMusic.Song mSong;
 
     public DownloadSearchedMusic(Activity activity, SearchMusic.Song song) {

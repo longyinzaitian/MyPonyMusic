@@ -14,6 +14,8 @@ import com.music.app.model.Music;
 
 /**
  * 播放在线音乐
+ *
+ * @author .
  */
 public abstract class PlayOnlineMusic extends PlayMusic {
     private OnlineMusic mOnlineMusic;

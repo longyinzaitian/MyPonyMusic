@@ -13,6 +13,9 @@ import com.music.app.R;
 import com.music.app.executor.NaviMenuExecutor;
 import com.music.app.utils.binding.Bind;
 
+/**
+ * @author .
+ */
 public class SettingFragment extends BaseFragment implements View.OnClickListener {
 
     @Bind(R.id.action_setting)

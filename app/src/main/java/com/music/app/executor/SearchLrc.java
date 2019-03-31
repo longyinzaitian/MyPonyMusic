@@ -10,6 +10,8 @@ import com.music.app.utils.FileUtils;
 
 /**
  * 如果本地歌曲没有歌词则从网络搜索歌词
+ *
+ * @author .
  */
 public abstract class SearchLrc implements IExecutor<String> {
     private String artist;

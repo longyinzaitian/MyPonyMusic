@@ -1,6 +1,9 @@
 package com.music.app.executor;
 
 
+/**
+ * @author .
+ */
 public class DownloadMusicInfo {
     private String title;
     private String musicPath;

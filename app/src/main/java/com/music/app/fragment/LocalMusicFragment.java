@@ -51,9 +51,11 @@ import java.util.List;
 
 /**
  * 本地音乐列表
+ *
+ * @author .
  */
 public class LocalMusicFragment extends BaseFragment implements AdapterView.OnItemClickListener, OnMoreClickListener, View.OnClickListener {
-    private static final String TAG = "LocalMusicFragment";
+
     @Bind(R.id.lv_local_music)
     private RecyclerView lvLocalMusic;
     @Bind(R.id.tv_empty)
@@ -85,7 +87,6 @@ public class LocalMusicFragment extends BaseFragment implements AdapterView.OnIt
         lvLocalMusic.setLayoutManager(mLinearLayoutManager);
         lvLocalMusic.setAdapter(mAdapter);
         if (getPlayService().getPlayingMusic() != null && getPlayService().getPlayingMusic().getType() == Music.Type.LOCAL) {
-//            lvLocalMusic.setSelection(getPlayService().getPlayingPosition());
             mLinearLayoutManager.scrollToPosition(getPlayService().getPlayingPosition());
         }
         updateView();
@@ -202,16 +203,20 @@ public class LocalMusicFragment extends BaseFragment implements AdapterView.OnIt
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
-                    case 0:// 分享
+                    // 分享
+                    case 0:
                         shareMusic(music);
                         break;
-                    case 1:// 设为铃声
+                    // 设为铃声
+                    case 1:
                         requestSetRingtone(music);
                         break;
-                    case 2:// 查看歌曲信息
+                    // 查看歌曲信息
+                    case 2:
                         MusicInfoActivity.start(getContext(), music);
                         break;
-                    case 3:// 删除
+                    // 删除
+                    case 3:
                         deleteMusic(music);
                         break;
                     default:

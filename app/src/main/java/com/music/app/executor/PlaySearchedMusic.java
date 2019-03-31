@@ -15,6 +15,8 @@ import com.music.app.model.DownloadInfo;
 
 /**
  * 播放搜索的音乐
+ *
+ * @author .
  */
 public abstract class PlaySearchedMusic extends PlayMusic {
     private SearchMusic.Song mSong;

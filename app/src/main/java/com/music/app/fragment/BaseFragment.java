@@ -14,6 +14,8 @@ import com.music.app.utils.binding.ViewBinder;
 
 /**
  * 基类<br>
+ *
+ * @author .
  */
 public abstract class BaseFragment extends Fragment {
     protected Handler mHandler = new Handler(Looper.getMainLooper());

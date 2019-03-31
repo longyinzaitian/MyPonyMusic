@@ -13,6 +13,8 @@ import com.music.app.model.DownloadInfo;
 
 /**
  * 分享在线歌曲
+ *
+ * @author .
  */
 public abstract class ShareOnlineMusic implements IExecutor<Void> {
     private Context mContext;

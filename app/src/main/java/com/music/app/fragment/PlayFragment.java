@@ -45,10 +45,13 @@ import me.wcy.lrcview.LrcView;
 
 /**
  * 正在播放界面
+ *
+ * @author .
  */
 public class PlayFragment extends BaseFragment implements View.OnClickListener,
         ViewPager.OnPageChangeListener, SeekBar.OnSeekBarChangeListener, OnPlayerEventListener,
         LrcView.OnPlayClickListener {
+
     @Bind(R.id.ll_content)
     private LinearLayout llContent;
     @Bind(R.id.iv_play_page_bg)
@@ -152,6 +155,9 @@ public class PlayFragment extends BaseFragment implements View.OnClickListener,
 
     private void initVolume() {
         mAudioManager = (AudioManager) getContext().getSystemService(Context.AUDIO_SERVICE);
+        if (mAudioManager == null) {
+            return;
+        }
         sbVolume.setMax(mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
         sbVolume.setProgress(mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
     }

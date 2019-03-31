@@ -18,11 +18,13 @@ import com.music.app.utils.NetworkUtils;
 import com.music.app.utils.Preferences;
 import com.music.app.utils.ToastUtils;
 
-
-public abstract class DownloadMusic implements IExecutor<Void> {
+/**
+ * @author .
+ */
+public abstract class BaseDownloadMusic implements IExecutor<Void> {
     private Activity mActivity;
 
-    public DownloadMusic(Activity activity) {
+    public BaseDownloadMusic(Activity activity) {
         mActivity = activity;
     }
 
@@ -57,6 +59,9 @@ public abstract class DownloadMusic implements IExecutor<Void> {
         download();
     }
 
+    /**
+     * 下载
+     */
     protected abstract void download();
 
     protected void downloadMusic(String url, String artist, String title, String coverPath) {
@@ -69,8 +74,14 @@ public abstract class DownloadMusic implements IExecutor<Void> {
             request.setDestinationInExternalPublicDir(FileUtils.getRelativeMusicDir(), fileName);
             request.setMimeType(MimeTypeMap.getFileExtensionFromUrl(url));
             request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
-            request.setAllowedOverRoaming(false); // 不允许漫游
+            // 不允许漫游
+            request.setAllowedOverRoaming(false);
+
             DownloadManager downloadManager = (DownloadManager) AppCache.get().getContext().getSystemService(Context.DOWNLOAD_SERVICE);
+            if (downloadManager == null) {
+                return;
+            }
+
             long id = downloadManager.enqueue(request);
             String musicAbsPath = FileUtils.getMusicDir().concat(fileName);
             DownloadMusicInfo downloadMusicInfo = new DownloadMusicInfo(title, musicAbsPath, coverPath);

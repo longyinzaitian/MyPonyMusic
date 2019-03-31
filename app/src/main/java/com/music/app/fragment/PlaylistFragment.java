@@ -40,8 +40,11 @@ import java.util.List;
 
 /**
  * 在线音乐
+ *
+ * @author .
  */
 public class PlaylistFragment extends BaseFragment implements AdapterView.OnItemClickListener {
+
     @Bind(R.id.lv_playlist)
     private RecyclerView lvPlaylist;
     @Bind(R.id.ll_loading)

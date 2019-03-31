@@ -28,6 +28,9 @@ import java.util.List;
 import com.music.app.constants.Actions;
 import com.music.app.utils.Preferences;
 
+/**
+ * @author .
+ */
 public class MenuBackgroundFragment extends Fragment implements
         OnItemClickListener {
 	private GridView mGridView;
@@ -58,6 +61,9 @@ public class MenuBackgroundFragment extends Fragment implements
 		AssetManager am = getActivity().getAssets();
 		try {
 			String[] drawableList = am.list("bkgs");
+			if (drawableList == null) {
+				return;
+			}
 			mBgList = new ArrayList<>();
 			for (String path : drawableList) {
 				BgEntity bg = new BgEntity();

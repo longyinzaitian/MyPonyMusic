@@ -13,8 +13,10 @@ import com.music.app.model.DownloadInfo;
 
 /**
  * 下载音乐
+ *
+ * @author .
  */
-public abstract class DownloadOnlineMusic extends DownloadMusic {
+public abstract class DownloadOnlineMusic extends BaseDownloadMusic {
     private OnlineMusic mOnlineMusic;
 
     public DownloadOnlineMusic(Activity activity, OnlineMusic onlineMusic) {

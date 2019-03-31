@@ -24,6 +24,9 @@ import com.music.app.utils.binding.ViewBinder;
 
 /**
  * 更新天气
+ *
+ * @author .
+ *
  * Created by wcy on 2016/1/17.
  * <p>
  * 天气现象表
