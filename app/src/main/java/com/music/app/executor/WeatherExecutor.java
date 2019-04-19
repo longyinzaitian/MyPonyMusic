@@ -108,7 +108,7 @@ public class WeatherExecutor implements IExecutor, AMapLocalWeatherListener {
             AppCache.get().setAMapLocalWeatherLive(aMapLocalWeatherLive);
             updateView(aMapLocalWeatherLive);
         } else {
-            Log.e(TAG, "获取天气预报失败");
+            Log.e(TAG, "get weather failed");
         }
 
         release();
