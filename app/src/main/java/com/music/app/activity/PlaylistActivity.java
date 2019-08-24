@@ -15,9 +15,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.music.app.R;
-
-import java.util.List;
-
 import com.music.app.adapter.OnMoreClickListener;
 import com.music.app.adapter.PlaylistAdapter;
 import com.music.app.constants.Actions;
@@ -25,6 +22,10 @@ import com.music.app.model.Music;
 import com.music.app.storage.DBManager;
 import com.music.app.utils.FileUtils;
 import com.music.app.utils.binding.Bind;
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * 播放列表
@@ -44,7 +45,15 @@ public class PlaylistActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playlist);
 
-        musicList = DBManager.get().getMusicDao().queryBuilder().list();
+        musicList = DBManager.get().getMusicDao().queryBuilder()
+            .list();
+        Collections.sort(musicList, new Comparator<Music>() {
+            @Override
+            public int compare(Music o1, Music o2) {
+                return (int)(o1.getId() - o2.getId());
+            }
+        });
+
         adapter = new PlaylistAdapter(musicList, getPlayService().getPlayingMusic());
         lvPlaylist.setAdapter(adapter);
         adapter.setIsPlaylist(true);
